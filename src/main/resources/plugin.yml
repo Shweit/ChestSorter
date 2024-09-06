@@ -1,0 +1,5 @@
+name: untitled
+version: '1.0'
+main: com.shweit.untitled.Untitled
+api-version: '1.21'
+authors: [ Shweit ]
