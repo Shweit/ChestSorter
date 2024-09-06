@@ -1,4 +1,4 @@
-name: Sorter
+name: ChestSorter
 version: '1.0'
 main: com.shweit.sorter.Sorter
 api-version: '1.21'

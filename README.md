@@ -1,18 +1,23 @@
 # PollMaster Plugin
-<img src="https://img.shields.io/github/actions/workflow/status/Shweit/REPO/runtime.yml" /> <img src="https://img.shields.io/github/v/release/Shweit/REPO" /> <img src="https://img.shields.io/github/license/Shweit/REPO" />
+<img src="https://img.shields.io/github/actions/workflow/status/Shweit/ChestSorter/runtime.yml" /> <img src="https://img.shields.io/github/v/release/Shweit/ChestSorter" /> <img src="https://img.shields.io/github/license/Shweit/ChestSorter" />
 
 ## Overview
 Short description of the project.
 
 ## Features
-- **Feature 1:** Description of feature 1.
-- **Feature 2:** Description of feature 2.
+- **Sorting by Amount:** Organizes items in a container based on their total stack size, placing larger stacks first.
+- **Sorting Alphabetically:** Sorts items in the container based on their names.
+- **Sorting by Category:** Groups items based on their Minecraft creative categories.
+  - **Random Shuffle:** Randomly shuffles all items in the container.
 
 ## Commands
-`/command1 <arg1> <arg2> <arg3> ... [arg4]`
-- **Description:** Description of the command.
+`/sort <player/coordinates> [sortType]`
+- **Description:** Sorts the items in the specified container or player's inventory based on the specified criteria.
 - **Permission:** permission.node
-- **Example:** `/command1 arg1 arg2 arg3`
+- **Example:** 
+  - `/sort` -> Sorts the Player's inventory alphabetically.
+  - `/sort Shweit amount` -> Sorts the Player's inventory by amount.
+  - `/sort 0 0 0 category` -> Sorts the container at coordinates (0, 0, 0) by category.
 
 ## Installation
 ### Prerequisites
@@ -22,8 +27,8 @@ Short description of the project.
 ### Cloning the Repository
 1. Clone the repository to your local machine.
 ```shell
-git clone git@github.com:Shweit/REPO.git
-cd REPO
+git clone git@github.com:Shweit/ChestSorter.git
+cd ChestSorter
 ```
 ### Building the Project
 2. Build the project using Gradle.
@@ -33,7 +38,7 @@ gradle build
 ### Setting up the Minecraft Server
 3. Copy the generated JAR file to the `plugins` directory of your Minecraft server.
 ```shell
-cp build/lib/PLUGIN-*.jar /path/to/your/minecraft/server/plugins
+cp build/libs/ChestSorter-*.jar /path/to/your/minecraft/server/plugins
 ```
 4. Start or restart your Minecraft server.
 ```shell
@@ -43,10 +48,6 @@ java -Xmx1024M -Xms1024M -jar paper-1.21.jar nogui
 ```shell
 /plugins
 ```
-
-## Future Features
-- **Feature 3:** Description of feature 3.
-- **Feature 4:** Description of feature 4.
 
 ## Contributing
 Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) to get started.

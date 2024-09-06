@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifact-${{ github.event.number }}
-          path: 'build/libs/Sorter*.jar'
+          path: 'build/libs/ChestSorter*.jar'
 
   runtime-test:
     name: Plugin Runtime Test

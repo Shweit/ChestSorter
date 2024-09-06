@@ -33,7 +33,7 @@ public final class SortCommand implements CommandExecutor, TabExecutor {
 
         if (args.length == 1) {
             if (!args[0].equals(commandSender.getName())) {
-                if (!commandSender.hasPermission("sorter.sort.others")) {
+                if (!commandSender.hasPermission("chestsorter.sort.others")) {
                     commandSender.sendMessage(ChatColor.RED + Translator.getTranslation("no_permission_sort_others"));
                     return true;
                 }
@@ -104,7 +104,7 @@ public final class SortCommand implements CommandExecutor, TabExecutor {
                 target.add(commandSender.getName());
             }
 
-            if (commandSender.hasPermission("sorter.sort.others")) {
+            if (commandSender.hasPermission("chestsorter.sort.others")) {
                 for (Player player : commandSender.getServer().getOnlinePlayers()) {
                     target.add(player.getName());
                 }
