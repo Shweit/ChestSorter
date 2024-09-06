@@ -2,13 +2,13 @@
 <img src="https://img.shields.io/github/actions/workflow/status/Shweit/ChestSorter/runtime.yml" /> <img src="https://img.shields.io/github/v/release/Shweit/ChestSorter" /> <img src="https://img.shields.io/github/license/Shweit/ChestSorter" />
 
 ## Overview
-Short description of the project.
+The ChestSort Plugin provides an intuitive way to sort both container inventories (chests, shulker boxes, etc.) and player inventories on your Minecraft server. With this plugin, players can organize their items by type, amount, category, or even shuffle them randomly, all through simple commands.
 
 ## Features
 - **Sorting by Amount:** Organizes items in a container based on their total stack size, placing larger stacks first.
 - **Sorting Alphabetically:** Sorts items in the container based on their names.
 - **Sorting by Category:** Groups items based on their Minecraft creative categories.
-  - **Random Shuffle:** Randomly shuffles all items in the container.
+- **Random Shuffle:** Randomly shuffles all items in the container.
 
 ## Commands
 `/sort <player/coordinates> [sortType]`

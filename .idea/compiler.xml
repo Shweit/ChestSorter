@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="Sorter" target="21" />
+      <module name="Sorter.main" target="21" />
+      <module name="Sorter.test" target="21" />
       <module name="untitled" target="21" />
     </bytecodeTargetLevel>
   </component>

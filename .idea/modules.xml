@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sorter.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sorter.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/mc-plugin-template.iml" filepath="$PROJECT_DIR$/.idea/mc-plugin-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChestSorter.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChestSorter.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/untitled.main.iml" filepath="$PROJECT_DIR$/.idea/modules/untitled.main.iml" />
     </modules>
   </component>
