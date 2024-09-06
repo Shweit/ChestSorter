@@ -1,6 +1,5 @@
 package com.shweit.sorter.commands;
 
-import com.shweit.sorter.util.Logger;
 import com.shweit.sorter.util.Translator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,7 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -18,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class SortCommand implements CommandExecutor, TabExecutor {
+public final class SortCommand implements CommandExecutor, TabExecutor {
     private static final String[] SORT_TYPES = {"alphabetical", "amount", "category", "random"};
 
     @Override
@@ -61,7 +59,10 @@ public class SortCommand implements CommandExecutor, TabExecutor {
         }
 
         if (args.length == 3) {
-            int x, y, z;
+            int x;
+            int y;
+            int z;
+
             try {
                 x = Integer.parseInt(args[0]);
                 y = Integer.parseInt(args[1]);
@@ -75,7 +76,10 @@ public class SortCommand implements CommandExecutor, TabExecutor {
         }
 
         if (args.length == 4) {
-            int x, y, z;
+            int x;
+            int y;
+            int z;
+
             try {
                 x = Integer.parseInt(args[0]);
                 y = Integer.parseInt(args[1]);
@@ -140,11 +144,11 @@ public class SortCommand implements CommandExecutor, TabExecutor {
         return null;
     }
 
-    private void sortPlayerInventory(UUID playerUUID) {
+    private void sortPlayerInventory(final UUID playerUUID) {
         sortPlayerInventory(playerUUID, "alphabetical");
     }
 
-    private void sortPlayerInventory(UUID playerUUID, String sortType) {
+    private void sortPlayerInventory(final UUID playerUUID, final String sortType) {
         Player player = Bukkit.getPlayer(playerUUID);
         if (player == null) return;
 
@@ -209,26 +213,27 @@ public class SortCommand implements CommandExecutor, TabExecutor {
     }
 
     // Helper method to create ItemStacks based on total amount
-    private List<ItemStack> createItemStacks(org.bukkit.Material material, int totalAmount) {
+    private List<ItemStack> createItemStacks(final org.bukkit.Material material, final int totalAmount) {
         List<ItemStack> stacks = new ArrayList<>();
         int maxStackSize = material.getMaxStackSize();  // Maximum stack size for the material
+        int finalTotalAmount = totalAmount;
 
         // Create stacks with maximum stack size
-        while (totalAmount > 0) {
+        while (finalTotalAmount > 0) {
             int stackSize = Math.min(totalAmount, maxStackSize);  // Calculate stack size
             ItemStack stack = new ItemStack(material, stackSize);
             stacks.add(stack);
-            totalAmount -= stackSize;
+            finalTotalAmount -= stackSize;
         }
 
         return stacks;
     }
 
-    private void sortBlockInventory(CommandSender commandSender, int x, int y, int z) {
+    private void sortBlockInventory(final CommandSender commandSender, final int x, final int y, final int z) {
         sortBlockInventory(commandSender, x, y, z, "alphabetical");
     }
 
-    private void sortBlockInventory(CommandSender commandSender, int x, int y, int z, String sortType) {
+    private void sortBlockInventory(final CommandSender commandSender, final int x, final int y, final int z, final String sortType) {
         // Check if the commandSender is a player and get the World
         org.bukkit.World world = commandSender instanceof Player player ? player.getWorld() : Bukkit.getWorlds().get(0);
 
@@ -325,7 +330,7 @@ public class SortCommand implements CommandExecutor, TabExecutor {
         commandSender.sendMessage(ChatColor.GREEN + Translator.getTranslation("container_sorted"));
     }
 
-    private void sortEnderChest(CommandSender commandSender, String sortType) {
+    private void sortEnderChest(final CommandSender commandSender, final String sortType) {
         if (!(commandSender instanceof Player player)) {
             commandSender.sendMessage(ChatColor.RED + Translator.getTranslation("enderchest_console_error"));
             return;

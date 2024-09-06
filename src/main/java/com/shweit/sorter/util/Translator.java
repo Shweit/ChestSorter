@@ -10,11 +10,11 @@ import java.util.Map;
 
 import static com.shweit.sorter.Sorter.config;
 
-public final class Translator {
+public abstract class Translator {
     private static Map<String, String> translations = new HashMap<>();
     private static String currentLang = "en"; // Default language
 
-    private Translator() {
+    public Translator() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 

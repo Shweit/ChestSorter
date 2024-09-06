@@ -23,8 +23,8 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Maven Build
-        run: mvn clean package
+      - name: Gradle Build
+        run: gradle build
 
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
