@@ -1,5 +1,11 @@
-name: untitled
+name: Sorter
 version: '1.0'
-main: com.shweit.untitled.Untitled
+main: com.shweit.sorter.Sorter
 api-version: '1.21'
 authors: [ Shweit ]
+
+commands:
+  sort:
+    description: Sorts the selected element
+    usage: /sort [target] [sortType]
+    aliases: [s]
