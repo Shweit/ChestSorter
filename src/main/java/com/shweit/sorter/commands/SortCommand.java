@@ -1,5 +1,6 @@
 package com.shweit.sorter.commands;
 
+import com.shweit.sorter.Sorter;
 import com.shweit.sorter.util.Translator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -145,7 +146,7 @@ public final class SortCommand implements CommandExecutor, TabExecutor {
     }
 
     private void sortPlayerInventory(final UUID playerUUID) {
-        sortPlayerInventory(playerUUID, "alphabetical");
+        sortPlayerInventory(playerUUID, Sorter.config.getString("default_sort_type", "alphabetical"));
     }
 
     private void sortPlayerInventory(final UUID playerUUID, final String sortType) {
@@ -230,7 +231,7 @@ public final class SortCommand implements CommandExecutor, TabExecutor {
     }
 
     private void sortBlockInventory(final CommandSender commandSender, final int x, final int y, final int z) {
-        sortBlockInventory(commandSender, x, y, z, "alphabetical");
+        sortBlockInventory(commandSender, x, y, z, Sorter.config.getString("default_sort_type", "alphabetical"));
     }
 
     private void sortBlockInventory(final CommandSender commandSender, final int x, final int y, final int z, final String sortType) {
