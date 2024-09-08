@@ -1,2 +1,11 @@
+# Configuration file for the ChestSorter Plugin
+
+# Default language for the plugin. You can change this to the filename of the language file you want to use.
+# The language file should be in the lang/ folder.
 lang: en
+
+# The default sorting algorithm to use when sorting containers.
+default_sort_type: "alphabetical"
+
+# Debug mode for the plugin. If set to true, the plugin will output debug messages to the console.
 debug: false
