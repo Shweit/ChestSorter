@@ -5,7 +5,12 @@ api-version: '1.21'
 authors: [ Shweit ]
 
 commands:
-  sort:
-    description: Sorts the selected element
-    usage: /sort [target] [sortType]
-    aliases: [s]
+  sortcontainer:
+    description: Sorts the selected container
+    usage: /sortcontainer <x> <y> <z> [sortType] [sortOrder]
+    aliases: [sc]
+
+  sortplayer:
+    description: Sorts the player's inventory
+    usage: /sortplayer [player] [sortType] [sortOrder]
+    aliases: [sp]

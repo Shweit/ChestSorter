@@ -11,7 +11,7 @@ public final class Logger {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
-    private static final String PREFIX = "[Sorter] ";
+    private static final String PREFIX = "[ChestSorter] ";
 
     public static void info(final String message) {
         Bukkit.getLogger().log(Level.INFO, PREFIX + message);
