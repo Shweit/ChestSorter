@@ -7,6 +7,7 @@ public abstract class CommandRegister {
     public static void registerCommands() {
         JavaPlugin plugin = Sorter.getInstance();
 
-        plugin.getCommand("sort").setExecutor(new SortCommand());
+        plugin.getCommand("sortcontainer").setExecutor(new SortContainerCommand());
+        plugin.getCommand("sortplayer").setExecutor(new SortPlayerCommand());
     }
 }
