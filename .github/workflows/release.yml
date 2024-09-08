@@ -18,16 +18,16 @@ jobs:
           java-version: '21'
           distribution: temurin
 
-      - name: Set maven project version
-        run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
+      - name: Set gradle project version
+        run: sed -i 's/version = .*/version = "${{ github.event.release.tag_name }}"/' build.gradle
 
-      - name: Build and package Maven project
-        run: mvn clean package -DskipTests
+      - name: Build and package gradle project
+        run: gradle build
 
       - name: Upload to release
         uses: softprops/action-gh-release@v1
         with:
-          files: target/PollMaster-${{ github.event.release.tag_name }}.jar
+          files: build/libs/ChestSorter*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -38,7 +38,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
           files: |
-            target/PollMaster-${{ github.event.release.tag_name }}.jar
+            build/libs/ChestSorter-${{ github.event.release.tag_name }}.jar
           loaders: |
             spigot
             paper
