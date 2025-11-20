@@ -68,6 +68,7 @@ dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT'
     compileOnly 'com.github.spotbugs:spotbugs-annotations:4.9.6'
     implementation 'io.papermc:paperlib:1.0.8'
+    implementation 'org.bstats:bstats-bukkit:3.1.0'
     spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0'
     testCompileOnly 'com.github.spotbugs:spotbugs-annotations:4.9.6'
     testImplementation 'io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT'
@@ -115,6 +116,7 @@ tasks.withType(SpotBugsTask).configureEach {
 shadowJar {
     archiveClassifier.set('')
     relocate 'io.papermc.lib', 'shadow.io.papermc.paperlib'
+    relocate 'org.bstats', 'com.shweit.chestsorter.bstats'
     minimize()
 }
 

@@ -9,6 +9,7 @@ import io.papermc.lib.PaperLib;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,6 +41,10 @@ public class ChestSorter extends JavaPlugin {
 
     // Register listeners
     registerListeners();
+
+    // Initialize bStats metrics
+    int pluginId = 28066;
+    new Metrics(this, pluginId);
 
     getLogger().info("ChestSorter enabled successfully!");
   }
