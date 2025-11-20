@@ -96,6 +96,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.1] - 2025-11-20
+
+### Added
+- **bStats Integration** ([#11](https://github.com/shweit/chestsorter/pull/11))
+  - Server usage analytics to track plugin adoption
+  - Anonymous statistics collection (can be disabled by server admins)
+  - Metrics available at https://bstats.org/plugin/bukkit/chestsorter/28066
+  - Helps understand plugin usage and guide future development
+
+### Fixed
+- Corrected welcome messages and project name references
+- Fixed publish workflow configuration
+
+### Dependencies
+- Bumped `com.github.spotbugs:spotbugs-annotations` from 4.9.6 to 4.9.8 ([#7](https://github.com/shweit/chestsorter/pull/7))
+- Bumped `com.github.spotbugs` from 6.4.2 to 6.4.5 ([#10](https://github.com/shweit/chestsorter/pull/10))
+- Bumped `org.junit.jupiter:junit-jupiter` from 6.0.0 to 6.0.1 ([#9](https://github.com/shweit/chestsorter/pull/9))
+- Bumped `org.junit.platform:junit-platform-launcher` to 6.0.1 ([#8](https://github.com/shweit/chestsorter/pull/8))
+
+### Build
+- Bumped `actions/checkout` from 5 to 6 ([#6](https://github.com/shweit/chestsorter/pull/6))
+- Bumped `actions/upload-artifact` from 4 to 5 ([#5](https://github.com/shweit/chestsorter/pull/5))
+
+---
+
 ## [Unreleased]
 
 Nothing yet!
@@ -125,4 +150,5 @@ This is a complete rewrite of ChestSorter for modern Minecraft versions. The plu
 
 ---
 
+[2.0.1]: https://github.com/shweit/chestsorter/releases/tag/v2.0.1
 [2.0.0]: https://github.com/shweit/chestsorter/releases/tag/v2.0.0
