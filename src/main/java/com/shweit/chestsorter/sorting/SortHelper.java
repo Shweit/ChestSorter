@@ -6,6 +6,8 @@ import java.util.Objects;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -261,7 +263,14 @@ public class SortHelper {
     float pitch = (float) plugin.getConfig().getDouble("sound.pitch", 1.0);
 
     try {
-      Sound sound = Sound.valueOf(soundName);
+      // Convert to namespaced key (ITEM_BOOK_PAGE_TURN -> item.book.page_turn)
+      String keyName = soundName.toLowerCase().replace('_', '.');
+      NamespacedKey key = NamespacedKey.minecraft(keyName);
+      Sound sound = Registry.SOUNDS.get(key);
+      if (sound == null) {
+        plugin.getLogger().warning("Invalid sound configured: " + soundName);
+        return;
+      }
       player.playSound(player.getLocation(), sound, volume, pitch);
     } catch (IllegalArgumentException e) {
       plugin.getLogger().warning("Invalid sound configured: " + soundName);
