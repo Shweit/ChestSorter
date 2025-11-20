@@ -1,0 +1,8 @@
+# Player-specific ChestSorter settings
+# This file stores per-player preferences
+# Format:
+# <uuid>:
+#   enabled: true/false
+#   has-seen-welcome: true/false
+#   default-sort-type: NAME/QUANTITY/MATERIAL_TYPE/DURABILITY
+#   default-sort-order: ASC/DESC
