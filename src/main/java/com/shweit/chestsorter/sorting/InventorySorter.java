@@ -1,6 +1,5 @@
 package com.shweit.chestsorter.sorting;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -21,8 +20,6 @@ public class InventorySorter {
    * @param sortType The type of sorting to apply
    * @param sortOrder The order to sort in (ASC/DESC)
    */
-  @SuppressFBWarnings(value = "RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE",
-      justification = "Defensive null check for safety")
   public void sortInventory(Inventory inventory, SortType sortType, SortOrder sortOrder) {
     List<ItemStack> items = new ArrayList<>();
 

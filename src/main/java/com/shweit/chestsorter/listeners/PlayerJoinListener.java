@@ -42,7 +42,7 @@ public class PlayerJoinListener implements Listener {
     // Show welcome message if they haven't seen it yet
     if (!settings.hasSeenWelcome()) {
       String welcomeMessage = plugin.getConfig().getString("messages.welcome",
-          "&6Welcome to ChestSorter! Use /sortprefs to customize settings.");
+          "&6Welcome to the Server! Use /sortprefs to customize settings.");
 
       // Convert color codes and send message if message is not null
       if (welcomeMessage != null) {

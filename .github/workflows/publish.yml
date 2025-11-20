@@ -49,7 +49,7 @@ jobs:
 
           files: ${{ steps.jar.outputs.path }}
 
-          name: EtherealPortals ${{ steps.version.outputs.version }}
+          name: ChestSorter ${{ steps.version.outputs.version }}
           version: ${{ steps.version.outputs.version }}
           version-type: ${{ github.event.release.prerelease && 'beta' || 'release' }}
 

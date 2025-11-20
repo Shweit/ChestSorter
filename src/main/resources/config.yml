@@ -49,7 +49,7 @@ messages:
   invalid-sort-order: "Invalid sort order. Use ASC or DESC"
   player-not-found: "Player not found."
   blacklisted: "This container is blacklisted from sorting."
-  welcome: "&7&m                    &r\n&6&l✦ Welcome to ChestSorter! &r\n&7This server uses &eChestSorter &7for automatic inventory sorting.\n&7• Middle-click in open containers to sort\n&7• Sneak + left-click containers to sort from outside\n&7• Use &e/sortprefs &7to customize your settings\n&7• If you have a chest sorter mod, you can disable the plugin with &e/sortprefs toggle\n&7&m                    &r"
+  welcome: "&7&m                    &r\n&6&l✦ Welcome to the Server! &r\n&7This server uses &eChestSorter &7for inventory sorting.\n&7• Middle-click in open containers to sort\n&7• Sneak + left-click containers to sort from outside\n&7• Use &e/sortprefs &7to customize your settings\n&7• If you have a chest sorter mod, you can disable the plugin with &e/sortprefs toggle\n&7&m                    &r"
   prefs-disabled: "&cChestSorter disabled! Use &e/sortprefs toggle &cto re-enable."
   prefs-enabled: "&aChestSorter enabled!"
   prefs-updated: "&aSort preferences updated!"
