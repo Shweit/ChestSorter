@@ -1,11 +1,56 @@
-# Configuration file for the ChestSorter Plugin
+# ChestSorter Configuration
 
-# Default language for the plugin. You can change this to the filename of the language file you want to use.
-# The language file should be in the lang/ folder.
-lang: en
+# Default sorting settings
+default-sort-type: NAME  # Options: NAME, QUANTITY, MATERIAL_TYPE, DURABILITY
+default-sort-order: ASC  # Options: ASC, DESC
 
-# The default sorting algorithm to use when sorting containers.
-default_sort_type: "alphabetical"
+# Sound settings
+sound:
+  enabled: true
+  # Sound to play when sorting succeeds
+  # Options: ITEM_BOOK_PAGE_TURN, ENTITY_EXPERIENCE_ORB_PICKUP, BLOCK_NOTE_BLOCK_PLING, etc.
+  success: ITEM_BOOK_PAGE_TURN
+  volume: 0.5
+  pitch: 1.0
 
-# Debug mode for the plugin. If set to true, the plugin will output debug messages to the console.
-debug: false
+# Sneak+Left-Click sorting
+# When sneaking and left-clicking (punching) a container, it will be sorted
+sneak-sort:
+  enabled: true
+
+# Middle-Click sorting
+# When a container is open and you middle-click (mouse wheel), it will be sorted
+middle-click:
+  enabled: true
+
+# Blacklist - Containers at these locations or of these types will not be sorted
+blacklist:
+  # Format: "world:x:y:z"
+  locations: []
+  # Example:
+  # - "world:100:64:200"
+  # - "world_nether:50:70:100"
+
+  # Container types that should never be sorted
+  # Format: "namespace:type" (e.g. "minecraft:hopper" or "create:mechanical_chest")
+  # Available vanilla types: minecraft:chest, minecraft:barrel, minecraft:hopper,
+  #                          minecraft:dropper, minecraft:dispenser, minecraft:shulker_box, etc.
+  container-types:
+    - "minecraft:hopper"
+
+# Messages
+messages:
+  sort-success: "Container sorted successfully!"
+  sort-player-success: "Inventory sorted successfully!"
+  sort-other-success: "Sorted %player%'s inventory!"
+  no-permission: "You don't have permission to do that."
+  invalid-location: "Invalid container location."
+  invalid-sort-type: "Invalid sort type. Available: NAME, QUANTITY, MATERIAL_TYPE, DURABILITY"
+  invalid-sort-order: "Invalid sort order. Use ASC or DESC"
+  player-not-found: "Player not found."
+  blacklisted: "This container is blacklisted from sorting."
+  welcome: "&7&m                    &r\n&6&l✦ Welcome to ChestSorter! &r\n&7This server uses &eChestSorter &7for automatic inventory sorting.\n&7• Middle-click in open containers to sort\n&7• Sneak + left-click containers to sort from outside\n&7• Use &e/sortprefs &7to customize your settings\n&7• If you have a chest sorter mod, you can disable the plugin with &e/sortprefs toggle\n&7&m                    &r"
+  prefs-disabled: "&cChestSorter disabled! Use &e/sortprefs toggle &cto re-enable."
+  prefs-enabled: "&aChestSorter enabled!"
+  prefs-updated: "&aSort preferences updated!"
+  prefs-info: "&7ChestSorter settings: &e%enabled% &7| Type: &e%type% &7| Order: &e%order%"
