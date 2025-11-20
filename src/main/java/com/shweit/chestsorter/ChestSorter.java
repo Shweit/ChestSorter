@@ -41,7 +41,7 @@ public class ChestSorter extends JavaPlugin {
     // Register listeners
     registerListeners();
 
-    getLogger().info("ChestSorter v2 enabled successfully!");
+    getLogger().info("ChestSorter enabled successfully!");
   }
 
   /**
