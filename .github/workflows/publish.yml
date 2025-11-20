@@ -1,0 +1,73 @@
+name: Publish to Modrinth & CurseForge
+
+permissions:
+  contents: read
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Publish to mod platforms
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Common Setup
+        uses: ./.github/actions/common-setup
+        with:
+          java-version: 21
+
+      - name: Build with Gradle
+        run: ./gradlew -Pver=${{ github.ref_name }} shadowJar
+
+      - name: Get version from tag
+        id: version
+        run: |
+          VERSION="${{ github.ref_name }}"
+          # Remove 'v' prefix if present
+          VERSION="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Find JAR file
+        id: jar
+        run: |
+          JAR_PATH=$(find build/libs -name "*.jar" -type f | head -n 1)
+          echo "path=$JAR_PATH" >> $GITHUB_OUTPUT
+          echo "Found JAR: $JAR_PATH"
+
+      - name: Upload to Modrinth & CurseForge
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: EIZluDTM
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 1101653
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: ${{ steps.jar.outputs.path }}
+
+          name: EtherealPortals ${{ steps.version.outputs.version }}
+          version: ${{ steps.version.outputs.version }}
+          version-type: ${{ github.event.release.prerelease && 'beta' || 'release' }}
+
+          game-versions: ">=1.21"
+
+          loaders: |
+            paper
+            spigot
+            purpur
+            folia
+
+          changelog: ${{ github.event.release.body }}
+
+          java: |
+            21
+
+      - name: Report success
+        if: success()
+        run: |
+          echo "✅ Successfully published to Modrinth and CurseForge!"
+          echo "Version: ${{ steps.version.outputs.version }}"

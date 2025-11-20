@@ -1,16 +1,40 @@
-name: ChestSorter
-version: '1.0'
-main: com.shweit.sorter.Sorter
-api-version: '1.21'
-authors: [ Shweit ]
-
+main: ${PACKAGE}.ChestSorter
+name: ${NAME}
+version: "${VERSION}"
+api-version: "1.21.1"
+author: Shweit
+description: A simple command based chest sorter
 commands:
   sortcontainer:
-    description: Sorts the selected container
-    usage: /sortcontainer <x> <y> <z> [sortType] [sortOrder]
+    description: Sorts the selected container (looks at target block if no coords given)
+    usage: /sortcontainer [x y z sortType sortOrder]
     aliases: [sc]
-
   sortplayer:
     description: Sorts the player's inventory
-    usage: /sortplayer [player] [sortType] [sortOrder]
+    usage: /sortplayer [player sortType sortOrder]
     aliases: [sp]
+permissions:
+  chestsorter.sort.container:
+    description: Allows sorting containers
+    default: true
+  chestsorter.sort.player.self:
+    description: Allows sorting own inventory
+    default: true
+  chestsorter.sort.player.others:
+    description: Allows sorting other players' inventories
+    default: op
+  chestsorter.sneak.sort:
+    description: Allows sneak+left-click sorting
+    default: true
+  chestsorter.middleclick.sort:
+    description: Allows middle-click sorting in open containers
+    default: true
+  chestsorter.*:
+    description: Grants all ChestSorter permissions
+    default: op
+    children:
+      chestsorter.sort.container: true
+      chestsorter.sort.player.self: true
+      chestsorter.sort.player.others: true
+      chestsorter.sneak.sort: true
+      chestsorter.middleclick.sort: true
