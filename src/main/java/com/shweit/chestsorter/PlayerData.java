@@ -86,8 +86,25 @@ public class PlayerData {
     String sortTypeStr = data.getString(key + ".default-sort-type");
     String sortOrderStr = data.getString(key + ".default-sort-order");
 
+    // Use config defaults if player has no saved preference
     SortType sortType = sortTypeStr != null ? SortType.fromString(sortTypeStr) : null;
     SortOrder sortOrder = sortOrderStr != null ? SortOrder.fromString(sortOrderStr) : null;
+
+    if (sortType == null) {
+      String configDefault = plugin.getConfig().getString("default-sort-type", "NAME");
+      sortType = SortType.fromString(configDefault);
+      if (sortType == null) {
+        sortType = SortType.NAME;
+      }
+    }
+
+    if (sortOrder == null) {
+      String configDefault = plugin.getConfig().getString("default-sort-order", "ASC");
+      sortOrder = SortOrder.fromString(configDefault);
+      if (sortOrder == null) {
+        sortOrder = SortOrder.ASC;
+      }
+    }
 
     PlayerSettings settings = new PlayerSettings(enabled, sortType, sortOrder, hasSeenWelcome);
     cache.put(uuid, settings);
