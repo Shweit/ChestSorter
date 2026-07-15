@@ -15,31 +15,55 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Determine Minecraft release line
+        id: target
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          case "$RELEASE_TAG" in
+            *-mc1.21)
+              echo "game-versions=>=1.21 <26.1" >> "$GITHUB_OUTPUT"
+              echo "java-version=21" >> "$GITHUB_OUTPUT"
+              ;;
+            *-mc26.2)
+              echo "game-versions=26.2" >> "$GITHUB_OUTPUT"
+              echo "java-version=25" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "::error::Release tag must end in a supported Minecraft target, e.g. -mc26.2"
+              exit 1
+              ;;
+          esac
+
       - name: Common Setup
         uses: ./.github/actions/common-setup
         with:
-          java-version: 21
+          java-version: ${{ steps.target.outputs.java-version }}
 
       - name: Build with Gradle
-        run: ./gradlew -Pver=${{ github.ref_name }} shadowJar
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: ./gradlew "-Pver=$RELEASE_TAG" shadowJar
 
       - name: Get version from tag
         id: version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          VERSION="${{ github.ref_name }}"
+          VERSION="$RELEASE_TAG"
           # Remove 'v' prefix if present
           VERSION="${VERSION#v}"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Find JAR file
         id: jar
         run: |
           JAR_PATH=$(find build/libs -name "*.jar" -type f | head -n 1)
-          echo "path=$JAR_PATH" >> $GITHUB_OUTPUT
+          echo "path=$JAR_PATH" >> "$GITHUB_OUTPUT"
           echo "Found JAR: $JAR_PATH"
 
       - name: Upload to Modrinth & CurseForge
-        uses: Kir-Antipov/mc-publish@v3.3
+        uses: Kir-Antipov/mc-publish@v3.3.1
         with:
           modrinth-id: EIZluDTM
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
@@ -53,18 +77,17 @@ jobs:
           version: ${{ steps.version.outputs.version }}
           version-type: ${{ github.event.release.prerelease && 'beta' || 'release' }}
 
-          game-versions: ">=1.21"
+          game-versions: ${{ steps.target.outputs.game-versions }}
 
           loaders: |
             paper
-            spigot
             purpur
             folia
 
           changelog: ${{ github.event.release.body }}
 
           java: |
-            21
+            ${{ steps.target.outputs.java-version }}
 
       - name: Report success
         if: success()

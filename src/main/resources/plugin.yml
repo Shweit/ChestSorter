@@ -1,7 +1,7 @@
 main: ${PACKAGE}.ChestSorter
 name: ${NAME}
 version: "${VERSION}"
-api-version: "1.21.1"
+api-version: "26.2"
 author: Shweit
 description: A simple command based chest sorter
 commands:

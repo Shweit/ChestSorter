@@ -1,6 +1,6 @@
 # ChestSorter
 
-A powerful and customizable chest sorting plugin for Minecraft Paper servers (1.21+).
+A powerful and customizable chest sorting plugin for Minecraft Paper 26.2 servers.
 
 ## Features
 
@@ -30,10 +30,10 @@ A powerful and customizable chest sorting plugin for Minecraft Paper servers (1.
   - First-join welcome message explaining features
 
 - **Modern API Usage**
-  - Built with Paper 1.21 modern APIs
+  - Built with modern Paper 26.2 APIs
   - Uses Brigadier command system for better tab completion
   - Adventure API for text components
-  - Full Java 21 support
+  - Full Java 25 support
 
 ## Installation
 
@@ -150,8 +150,8 @@ If you or your players use client-side chest sorting mods (like Inventory Profil
 This prevents conflicts while other players can still use the server-side sorting.
 
 ### Server Requirements
-- **Paper 1.21+** (or Folia 1.21+)
-- **Java 21+**
+- **Paper 26.2** (or a compatible Folia 26.2 build)
+- **Java 25+**
 
 ### Plugin Dependencies
 - PaperLib (shaded, no need to install separately)
@@ -219,4 +219,4 @@ Built with:
 
 ---
 
-**Note:** This plugin requires Paper 1.21+ and will not work on Spigot or older Minecraft versions due to modern API usage.
+**Note:** The current `master` release line requires Paper 26.2 and Java 25. Minecraft 1.21 maintenance releases are built from the `1.21.x` branch.

@@ -24,3 +24,27 @@ CHANGED - Updated `StorageManager` class to persist scoreboard data
 ```
 
 After the pull request has been reviewed, approved, and passes all automated checks, it will be merged into master.
+
+## Minecraft version support
+
+The repository uses one active development line and maintenance branches for older Minecraft
+versions:
+
+- `master` targets the latest supported Minecraft and Paper release.
+- `<version>.x` branches, such as `1.21.x`, receive compatible bug and security fixes only.
+- New features are developed on `master` and are backported selectively with `git cherry-pick`.
+- Maintenance branches are not merged back into `master`.
+
+Create a maintenance branch from the final compatible commit before updating `master` to a new
+Minecraft compatibility line. A separate branch is not needed for Paper build updates or Minecraft
+patch releases that do not require different source code, API metadata, or a different Java runtime.
+
+Release tags must include both the plugin version and Minecraft target:
+
+```text
+v2.1.0-mc26.2
+v2.0.4-mc1.21
+```
+
+The publishing workflow uses this suffix to select the correct Minecraft range and Java version.
+The Paper dependency, Java toolchain, and `plugin.yml` API version remain branch-specific.

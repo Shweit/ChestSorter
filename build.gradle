@@ -3,8 +3,8 @@ import java.text.SimpleDateFormat
 
 plugins {
     id 'checkstyle'
-    id "com.github.spotbugs" version "6.4.7"
-    id 'com.gradleup.shadow' version '9.2.2'
+    id "com.github.spotbugs" version "6.5.9"
+    id 'com.gradleup.shadow' version '9.5.1'
     id 'java'
 }
 
@@ -37,8 +37,9 @@ if (shortVersion == null || shortVersion == "") {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 repositories {
@@ -65,19 +66,23 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.papermc.paper:paper-api:1.21.11-pre3-R0.1-SNAPSHOT'
-    compileOnly 'com.github.spotbugs:spotbugs-annotations:4.9.8'
+    compileOnly 'io.papermc.paper:paper-api:26.2.build.+'
+    compileOnly 'com.github.spotbugs:spotbugs-annotations:4.10.3'
     implementation 'io.papermc:paperlib:1.0.8'
-    implementation 'org.bstats:bstats-bukkit:3.1.0'
+    implementation 'org.bstats:bstats-bukkit:3.2.1'
     spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0'
-    testCompileOnly 'com.github.spotbugs:spotbugs-annotations:4.9.8'
-    testImplementation 'io.papermc.paper:paper-api:1.21.11-pre3-R0.1-SNAPSHOT'
-    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.0.1'
+    testCompileOnly 'com.github.spotbugs:spotbugs-annotations:4.10.3'
+    testImplementation 'io.papermc.paper:paper-api:26.2.build.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.1.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.1.2'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.deprecation = true
 }
 
 processResources {
@@ -87,7 +92,7 @@ processResources {
 }
 
 checkstyle {
-    toolVersion = '12.0.1'
+    toolVersion = '13.8.0'
     maxWarnings = 0
 }
 

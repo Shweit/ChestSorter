@@ -123,7 +123,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet!
+### Changed
+
+- Updated the plugin to Minecraft 26.2 and Java 25
+- Updated the Paper API and all build, test, runtime, and CI dependencies
+- Added versioned release lines for Minecraft 26.2 and the maintained 1.21.x branch
 
 ---
 
