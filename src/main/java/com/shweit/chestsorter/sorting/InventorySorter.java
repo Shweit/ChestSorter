@@ -3,6 +3,7 @@ package com.shweit.chestsorter.sorting;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -24,11 +25,7 @@ public class InventorySorter {
     List<ItemStack> items = new ArrayList<>();
 
     // Collect all non-null items
-    ItemStack[] contents = inventory.getContents();
-    if (contents == null) {
-      return;
-    }
-
+    ItemStack[] contents = Objects.requireNonNull(inventory.getContents(), "Inventory contents");
     for (ItemStack item : contents) {
       if (item != null && item.getType() != Material.AIR) {
         items.add(item.clone());
